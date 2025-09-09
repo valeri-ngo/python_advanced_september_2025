@@ -1,6 +1,6 @@
 from collections import deque
 
-liters = input()
+liters = int(input())
 queue = deque([])
 
 name = input()
@@ -17,7 +17,7 @@ while command != 'End':
         person = queue.popleft()
 
         if liters >= liters_wanted:
-            print(f"{[person]} got water")
+            print(f"{person} got water")
             liters -= liters_wanted
         else:
             print(f"{person} must wait")
