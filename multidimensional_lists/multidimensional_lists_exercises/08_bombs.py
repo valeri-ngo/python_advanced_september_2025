@@ -6,7 +6,6 @@ for _ in range(square):
     row = [int(x) for x in input().split()]
     matrix.append(row)
 
-
 bombs = input().split()
 bombs = [b.split(",") for b in bombs]
 bombs = [(int(r), int(c)) for r, c in bombs]
