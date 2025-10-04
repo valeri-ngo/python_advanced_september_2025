@@ -1,7 +1,9 @@
 class MatrixContentError(Exception):
+    """Raised when there is a character input"""
     pass
 
 class MatrixSizeError(Exception):
+    """Raised when the row is not equal to the column"""
     pass
 
 def rotate_matrix(matrix):

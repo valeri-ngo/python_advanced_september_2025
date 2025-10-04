@@ -1,8 +1,11 @@
 class NameTooShortError(Exception):
+    """Raised when the name length is too short"""
     pass
 class MustContainAtSymbolError(Exception):
+    """Raised when no special character is present"""
     pass
 class InvalidDomainError(Exception):
+    """Raised when incorrect domain is entered"""
     pass
 
 MINIMUM_NAME_LENGTH = 5
