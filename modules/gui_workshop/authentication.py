@@ -1,6 +1,5 @@
 import json
 import tkinter as tk
-from email.utils import specialsre
 
 from string import ascii_lowercase, ascii_uppercase, punctuation, digits
 from canvas import app
@@ -25,13 +24,15 @@ def login(username, password):
 def render_login_screen(error=None):
     clean_screen()
 
+    tk.Label(app,text="Username").grid(row=0, column=0)
+    tk.Label(app,text="Password").grid(row=1, column=0)
     username = tk.Entry(app)
     username.grid(row=0,
-                  column=0
+                  column=1
                   )
     password = tk.Entry(app)
     password.grid(row=1,
-                  column=0)
+                  column=1)
 
     tk.Button(app,
               text = "Enter",
@@ -39,7 +40,7 @@ def render_login_screen(error=None):
               fg = "black",
               command = lambda: login(username.get(), password.get())
               ).grid(row=2,
-                     column=0)
+                     column=1)
 
     if error:
         tk.Label(app,
@@ -56,11 +57,11 @@ def register(**user): # username, password, first_name, last_name
         render_register_screen(error="All fields must be filled!")
         return
 
-    if len(user["username"]) < 5:
+    if len(user["username"]) < 3:
         render_register_screen(error="Username must contain at least 5 characters.")
         return
 
-    if len(user["password"]) < 5:
+    if len(user["password"]) < 3:
         render_register_screen(error="Password must contain at least 5 characters.")
         return
 
@@ -107,18 +108,22 @@ def register(**user): # username, password, first_name, last_name
 def render_register_screen(error=None):
     clean_screen()
 
+    tk.Label(app,text="Username").grid(row=0, column=0)
+    tk.Label(app,text="Password").grid(row=1, column=0)
+    tk.Label(app,text="First Name").grid(row=2, column=0)
+    tk.Label(app,text="Last Name").grid(row=3, column=0)
     username = tk.Entry(app)
     username.grid(row= 0,
-                  column= 0)
+                  column= 1)
     password = tk.Entry(app)
     password.grid(row= 1,
-                  column= 0)
+                  column= 1)
     first_name = tk.Entry(app)
     first_name.grid(row=2 ,
-                    column= 0)
+                    column= 1)
     last_name = tk.Entry(app)
     last_name.grid(row=3,
-                   column= 0)
+                   column= 1)
     button = tk.Button(app,
                        text= "Register",
                        bg= "green",
@@ -130,7 +135,7 @@ def render_register_screen(error=None):
                            last_name= last_name.get()
                        ))
     button.grid(row=4,
-                column=0)
+                column=1)
 
     if error:
         tk.Label(app,

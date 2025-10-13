@@ -1,3 +1,5 @@
-{"id": 1, "name": "some_tests", "img_path": "1.png", "count": 0}
-{"id": 2, "name": "asd", "img_path": "1.png", "count": 17}
-{"id": 3, "name": "3", "img_path": "1.png", "count": 22}
+{"id": 1, "name": "some_tests", "img_path": "1.png", "count": 1}
+{"id": 2, "name": "asd", "img_path": "1.png", "count": 28}
+{"id": 3, "name": "3", "img_path": "1.png", "count": 31}
+{"id": 4, "name": "qew", "img_path": "1.png", "count": 2}
+{"id": 5, "name": "asd", "img_path": "1.png", "count": 90}
