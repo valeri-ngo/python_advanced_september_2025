@@ -1,43 +1,32 @@
 from collections import deque
 
-package_weight = [int(x) for x in input().split()]
-available_courier = deque(int(x) for x in input().split())
-total_delivered_weight = 0
+packages = [int(p) for p in input().split()]
+couriers = deque([int(c) for c in input().split()])
 
-while package_weight and available_courier:
+total_weight_delivered = 0
 
-    current_package = package_weight[-1]
-    current_courier = available_courier[0]
+while packages and couriers:
 
-    if current_courier > current_package:
-        current_courier -= current_package * 2
-        package_weight.pop()
-        total_delivered_weight += current_package
+    package = packages[-1]
+    courier = couriers.popleft()
 
-        if current_courier > 0:
-            available_courier[0] = current_courier
-            available_courier.rotate(-1)
-        else:
-            available_courier.popleft()
+    if courier >= package:
+        total_weight_delivered += package
+        packages.pop()
 
-    elif current_courier < current_package:
-        package_weight[-1] -= current_courier
-        available_courier.popleft()
-        total_delivered_weight += current_courier
+        courier -= 2 * package
+        if courier > 0:
+            couriers.append(courier)
 
     else:
-        package_weight.pop()
-        available_courier.popleft()
-        total_delivered_weight += current_package
+        total_weight_delivered += courier
+        packages[-1] -= courier
 
-print(f"Total weight: {total_delivered_weight} kg")
+print(f"Total weight: {total_weight_delivered} kg")
 
-if not package_weight:
+if not packages and not couriers:
     print("Congratulations, all packages were delivered successfully by the couriers today.")
-    if available_courier:
-        print("Couriers left with capacity: " + ", ".join(map(str, available_courier)))
-elif not available_courier:
-    print("Unfortunately, there are no more available couriers to deliver the following packages: "
-          + ", ".join(map(str, package_weight)))
-else:
-    print("Couriers left with capacity: " + ", ".join(map(str, available_courier)))
+elif packages and not couriers:
+    print(f"Unfortunately, there are no more available couriers to deliver the following packages: {', '.join(map(str, packages))}")
+elif couriers and not packages:
+    print(f"Couriers are still on duty: {', '.join(map(str, couriers))} but there are no more packages to deliver.")
