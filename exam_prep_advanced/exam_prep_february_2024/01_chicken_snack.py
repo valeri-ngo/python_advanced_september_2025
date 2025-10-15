@@ -21,6 +21,8 @@ while amount_of_money and food_prices:
         amount_of_money.pop()
         if amount_of_money:
             amount_of_money[-1] += diff
+        else:
+            amount_of_money.append(diff)
 
     elif current_money < current_price:
         amount_of_money.pop()
